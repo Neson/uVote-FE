@@ -9,7 +9,8 @@ gulp.task('styles', function () {
     .pipe($.plumber())
     .pipe($.rubySass({
       style: 'expanded',
-      precision: 10
+      precision: 10,
+      loadPath: require('node-neat').includePaths
     }))
     .pipe($.autoprefixer({browsers: ['last 1 version']}))
     .pipe(gulp.dest('.tmp/styles'));
