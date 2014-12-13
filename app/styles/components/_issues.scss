@@ -1,0 +1,163 @@
+.issue-list {
+  .issues {
+    @include clearfix;
+  }
+
+  .issue {
+    $issue-border-color: $base-border-color;
+    $issue-border: 1px solid $issue-border-color;
+    $issue-background: lighten($issue-border-color, 10);
+    $issue-header-background: $issue-background;
+    $issue-hover-background: lighten($issue-background, 5);
+    $issue-image-background: #DBD199;
+    $issue-image-hover-background: lighten($issue-image-background, 5);
+    $issue-stats-color: lighten($base-accent-color, 10);
+
+    @include transition (all 0.2s ease-in-out);
+    background-color: $issue-background;
+    border-radius: $base-border-radius;
+    border: $issue-border;
+    margin-bottom: $base-spacing;
+    cursor: pointer;
+    box-shadow: 0 2px 4px darken($base-background-color, 10);
+    position: relative;
+
+    @include media($medium-screen) {
+      @include span-columns(4);
+      @include omega(3n);
+    }
+
+    .issue-image {
+      overflow: hidden;
+      max-height: 150px;
+
+      img, .img {
+        width: 100%;
+        @include transition (all 0.2s ease-in-out);
+        background: $issue-image-background;
+        border-top-left-radius: $base-border-radius;
+        border-top-right-radius: $base-border-radius;
+        background-size: cover;
+        background-position: 50% 50%;
+        min-height: 120px;
+      }
+    }
+
+    .ribbon-wrapper {
+      $ribbon-size: 85px;
+      $ribbon-background: $primary-color;
+      @include size($ribbon-size);
+      overflow: hidden;
+      position: absolute;
+      top: -1px;
+      right: -1px;
+
+      .ribbon {
+        font-size: .8em;
+        font-weight: 800;
+        text-align: center;
+        @include transform(rotate(45deg));
+        position: relative;
+        padding: 2px 7px;
+        left: -7px;
+        top: 20px;
+        width: 120px;
+        background-color: $ribbon-background;
+        color: white;
+        box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+      }
+    }
+
+    .issue-header {
+      @extend h4;
+      @include transition (all 0.2s ease-in-out);
+      background-color: $issue-header-background;
+      border-bottom: $issue-border;
+      border-radius: $base-border-radius $base-border-radius 0 0;
+      font-weight: bold;
+      padding: $base-spacing/3 $gutter/2;
+    }
+
+    .issue-copy {
+      padding: $base-spacing/2 $gutter/2;
+      font-size: .9em;
+      line-height: 1.5em;
+      height: 100px;
+      overflow: hidden;
+      position: relative;
+
+      * {
+        max-height: 100%;
+        text-overflow: ellipsis;
+        -webkit-text-overflow: ellipsis;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 36px;
+        left: 0;
+        bottom: 0;
+        @include transition (all 0.2s ease-in-out);
+        @include linear-gradient(top, rgba($issue-background, 0) 0%, rgba($issue-background, 1) 100%);
+      }
+    }
+
+    .issue-stats {
+      padding: $base-spacing/2 $gutter/2;
+      overflow: auto;
+      padding-left: 0;
+      padding-right: 0;
+
+      ul li {
+        display: inline;
+        color: $issue-stats-color;
+        font-weight: 800;
+        font-size: 1.2em;
+        float: left;
+        border-right: 1px solid transparentize($base-font-color, .8);
+        line-height: 1.1em;
+        padding: 0 .7em 0 .7em;
+        width: 33.333%;
+
+        &:last-child {
+          border-right: 0;
+        }
+
+        span {
+          color: $base-font-color;
+          font-size: .7em;
+          display: block;
+          font-weight: normal;
+        }
+      }
+    }
+
+    &:hover {
+      background-color: $issue-hover-background;
+
+      .issue-image img {
+        background: $issue-image-hover-background;
+      }
+
+      .issue-header {
+        background-color: $issue-hover-background;
+      }
+
+      .issue-copy {
+        &::after {
+          @include linear-gradient(top, rgba($issue-hover-background, 0) 0%, rgba($issue-hover-background, 1) 100%);
+        }
+      }
+    }
+
+    &:active {
+      background-color: $issue-background;
+
+      .issue-header {
+        background-color: $issue-background;
+      }
+    }
+  }
+}

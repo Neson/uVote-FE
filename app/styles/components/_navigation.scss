@@ -217,6 +217,7 @@
     display: inline;
     text-transform: uppercase;
     vertical-align: baseline;
+    // box-shadow: 0 0 3px rgba(255,255,255, .9);
   }
 
   .post-issue {
@@ -225,6 +226,7 @@
     text-transform: uppercase;
     vertical-align: baseline;
     background-color: $primary-color;
+    // box-shadow: 0 0 3px rgba(255,255,255, .9);
 
     &:hover {
       background-color: darken($primary-color, 10%);
