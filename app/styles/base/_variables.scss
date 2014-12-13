@@ -1,8 +1,9 @@
 // Typography
-$sans-serif: $helvetica;
-$serif: $georgia;
+$sans-serif: xingothic-tc-w6, $helvetica;
+$bold-sans-serif: xingothic-tc-w8, $sans-serif;
+$serif: datm7, $georgia;
 $base-font-family: $sans-serif;
-$header-font-family: $base-font-family;
+$header-font-family: $serif;
 
 // Font Sizes
 $base-font-size: 1em;

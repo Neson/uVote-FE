@@ -1,0 +1,266 @@
+.navigation {
+  $navigation-padding: 1em;
+  $navigation-logo-height: 2em;
+  $navigation-background: $main-color;
+  $navigation-color: $base-background-color;
+  $navigation-color-hover: darken($base-background-color, 10%);
+  $navigation-height: 80px;
+  $navigation-item-padding: 1em;
+  $navigation-submenu-padding: 1em;
+  $navigation-submenu-width: 12em;
+  $navigation-item-nudge: 2.2em;
+
+  background-color: $navigation-background;
+  border-bottom: 1px solid darken($navigation-background, 6);
+  height: $navigation-height;
+  width: 100%;
+  z-index: 9999;
+  font-family: $bold-sans-serif;
+
+  .title {
+    display: inline;
+    float: left;
+    padding-left: $navigation-padding;
+    max-height: $navigation-height;
+
+    * {
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    img {
+      max-height: $navigation-height;
+      opacity: 1;
+      padding: .8em 0;
+      margin-right: 7px;
+      float: left;
+    }
+
+    h1, h2 {
+      line-height: $navigation-height;
+      vertical-align: top;
+      color: $navigation-color;
+      font-size: $base-font-size * 2.2;
+    }
+
+    h2 {
+      padding-top: $navigation-height * 0.2;
+      padding-left: 2px;
+      line-height: $navigation-height * 0.2;
+      font-size: $base-font-size;
+    }
+
+    h2 + h1 {
+      line-height: $navigation-height * 0.4;
+      padding-bottom: $navigation-height * 0.2;
+      font-size: $base-font-size * 1.6;
+      display: block;
+    }
+
+    @include media ($large-screen) {
+      float: left;
+      display: inline-block;
+    }
+  }
+
+  .navigation-menu-button {
+    color: $navigation-color;
+    display: block;
+    float: right;
+    font-weight: 700;
+    line-height: $navigation-height;
+    margin: 0;
+    padding-right: $navigation-submenu-padding;
+    text-transform: uppercase;
+
+    @include media ($large-screen) {
+      display: inline-block;
+      display: none;
+    }
+
+    &:hover {
+      color: $navigation-color-hover;
+    }
+  }
+
+  // Nav menu
+
+  .navigation-wrapper {
+    @include outer-container;
+    @include clearfix;
+    position: relative;
+    z-index: 999;
+  }
+
+  ul.navigation-menu {
+    -webkit-transform-style: preserve-3d; // stop webkit flicker
+    clear: both;
+    display: none;
+    margin: 0 auto;
+    overflow: visible;
+    padding: 0;
+    // width: 100%;
+    z-index: 99999;
+
+    @include media ($large-screen) {
+      display: block;
+      text-align: center;
+      float: right;
+      clear: none;
+    }
+  }
+
+  // The nav items
+
+  .nav-link:first-child {
+    @include media($large-screen) {
+      margin-left: $navigation-item-nudge;
+    }
+  }
+
+  ul li.nav-link {
+    background: $navigation-background;
+    display: block;
+    line-height: $navigation-height;
+    overflow: hidden;
+    padding-right: $navigation-submenu-padding;
+    text-align: right;
+    width: 100%;
+    z-index: 9999;
+    font-size: $base-font-size * 1.1;
+
+    @include media($large-screen) {
+      background: transparent;
+      display: inline;
+      line-height: $navigation-height;
+
+      a {
+        padding-right: $navigation-item-padding;
+      }
+    }
+
+    a {
+      color: $navigation-color;
+      display: inline-block;
+
+
+      &:hover {
+        color: $navigation-color-hover;
+      }
+    }
+  }
+
+  // Sub menus
+
+  li.more.nav-link {
+    padding-right: 0;
+
+    @include media($large-screen) {
+      padding-right: $navigation-submenu-padding;
+    }
+
+    > ul > li:first-child a  {
+      padding-top: 1em;
+    }
+
+    a {
+      margin-right: $navigation-submenu-padding;
+    }
+
+    > a {
+      padding-right: 0.6em;
+    }
+
+    > a:after {
+      @include position(absolute, auto -.4em auto auto);
+      color: $navigation-color;
+      content: '\25BE';
+    }
+  }
+
+  li.more {
+    overflow: visible;
+    padding-right: 0;
+
+    a {
+      padding-right: $navigation-submenu-padding;
+    }
+
+    > a {
+      padding-right: 1.6em;
+      position: relative;
+
+      @include media($large-screen) {
+        margin-right: $navigation-submenu-padding;
+      }
+
+      &:after {
+        content: '›';
+        font-size: 1.2em;
+        position: absolute;
+        right: $navigation-submenu-padding / 2;
+      }
+    }
+
+    &:hover > .submenu {
+      display: block;
+    }
+
+    @include media($large-screen) {
+      padding-right: $navigation-submenu-padding;
+      position: relative;
+    }
+  }
+
+  ul.submenu {
+    display: none;
+    padding-left: 0;
+
+    @include media($large-screen) {
+      left: -$navigation-submenu-padding;
+      position: absolute;
+      top: 1.5em;
+    }
+
+    .submenu {
+      @include media($large-screen) {
+        left: $navigation-submenu-width - .2em;
+        top: 0;
+      }
+    }
+
+    li {
+      display: block;
+      padding-right: 0;
+
+      @include media($large-screen) {
+        line-height: $navigation-height / 1.3;
+
+        &:first-child > a {
+          border-top-left-radius: $base-border-radius;
+          border-top-right-radius: $base-border-radius;
+        }
+
+        &:last-child > a {
+          border-bottom-left-radius: $base-border-radius;
+          border-bottom-right-radius: $base-border-radius;
+          padding-bottom: .7em;
+        }
+      }
+
+      a {
+        background-color: darken($navigation-background, 3);
+        display: inline-block;
+        text-align: right;
+        width: 100%;
+
+        @include media($large-screen) {
+          background-color: $navigation-background;
+          padding-left: $navigation-submenu-padding;
+          text-align: left;
+          width: $navigation-submenu-width;
+        }
+      }
+    }
+  }
+}

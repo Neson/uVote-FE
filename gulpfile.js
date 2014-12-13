@@ -127,7 +127,7 @@ gulp.task('watch', ['connect'], function () {
 
   // watch for changes
   gulp.watch([
-    'app/*.html',
+    'app/**/*.html',
     '.tmp/styles/**/*.css',
     'app/scripts/**/*.js',
     'app/images/**/*'
@@ -135,7 +135,7 @@ gulp.task('watch', ['connect'], function () {
 
   gulp.watch('app/styles/**/*.scss', ['styles']);
   gulp.watch('app/scripts/**/*', ['scripts', 'coffeescripts']);
-  gulp.watch('app/*.html', ['fileinclude']);
+  gulp.watch('app/**/*.html', ['fileinclude']);
   gulp.watch('bower.json', ['wiredep']);
 });
 

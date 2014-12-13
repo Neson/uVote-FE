@@ -4,6 +4,7 @@
  * MIT License */
 
 // Variables
+@import "color";
 @import "variables";
 
 // Neat Settings -- uncomment if using Neat -- must be imported before Neat
@@ -18,6 +19,7 @@
 
 // Typography and Elements
 @import "typography";
+@import "layout";
 @import "forms";
 @import "tables";
 @import "lists";
