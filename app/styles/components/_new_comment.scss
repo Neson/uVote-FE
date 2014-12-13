@@ -1,0 +1,25 @@
+.new_comment {
+  position: relative;
+  margin-bottom: 42px;
+
+  .picture, .picture img {
+    border-radius: 1000px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+  }
+
+  .picture {
+    margin: 8px;
+  }
+
+  input {
+    line-height: 52px;
+    padding-left: 64px;
+    border-radius: 1000px;
+  }
+
+}

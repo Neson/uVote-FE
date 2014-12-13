@@ -1,7 +1,8 @@
+'use strict';
+
 $(document).ready(function() {
   var menu = $('.navigation-menu');
   var menuToggle = $('.navigation-menu-button');
-  var signUp = $('.sign-up');
 
   $(menuToggle).on('click', function(e) {
     e.preventDefault();

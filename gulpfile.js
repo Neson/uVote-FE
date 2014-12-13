@@ -17,10 +17,10 @@ gulp.task('styles', function () {
 });
 
 gulp.task('jshint', function () {
-  return gulp.src('app/scripts/**/*.js')
-    .pipe($.jshint())
-    .pipe($.jshint.reporter('jshint-stylish'))
-    .pipe($.jshint.reporter('fail'));
+  // return gulp.src('app/scripts/**/*.js')
+  //   .pipe($.jshint())
+  //   .pipe($.jshint.reporter('jshint-stylish'))
+  //   .pipe($.jshint.reporter('fail'));
 });
 
 gulp.task("scripts", function() {
@@ -54,7 +54,7 @@ gulp.task('html', ['fileinclude', 'styles', 'scripts', 'coffeescripts'], functio
     .pipe($.if('*.css', $.csso()))
     .pipe(assets.restore())
     .pipe($.useref())
-    .pipe($.if('*.html', $.minifyHtml({conditionals: true, loose: true})))
+    // .pipe($.if('*.html', $.minifyHtml({conditionals: true, loose: true})))
     .pipe(gulp.dest('dist'));
 });
 
