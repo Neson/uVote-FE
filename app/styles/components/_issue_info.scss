@@ -1,0 +1,13 @@
+.issue_info {
+
+  .img {
+    width: 100%;
+    background-size: cover !important;
+
+    &::before {
+      content: "";
+      display: block;
+      padding-top: 100%;
+    }
+  }
+}

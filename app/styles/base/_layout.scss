@@ -4,4 +4,5 @@ body {
 
 .main {
   @include outer-container;
+  padding: 1em;
 }

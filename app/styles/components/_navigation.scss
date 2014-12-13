@@ -212,6 +212,13 @@
     }
   }
 
+  .sign-up {
+    @extend %button;
+    display: inline;
+    text-transform: uppercase;
+    vertical-align: baseline;
+  }
+
   ul.submenu {
     display: none;
     padding-left: 0;

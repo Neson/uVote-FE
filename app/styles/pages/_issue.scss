@@ -1,0 +1,20 @@
+.main.issue {
+
+  > * {
+    @include row();
+  }
+
+  > .issue {
+    .issue_info {
+      @include media ($medium-screen) {
+        @include span-columns(4);
+      }
+    }
+
+    .issue_content {
+      @include media ($medium-screen) {
+        @include span-columns(8);
+      }
+    }
+  }
+}
