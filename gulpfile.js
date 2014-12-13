@@ -23,6 +23,19 @@ gulp.task('jshint', function () {
     .pipe($.jshint.reporter('fail'));
 });
 
+gulp.task("scripts", function() {
+  return gulp.src('app/scripts/**/*.js')
+    .pipe($.include())
+    .pipe(gulp.dest('.tmp/scripts'));
+});
+
+gulp.task("coffeescripts", function() {
+  return gulp.src('app/scripts/**/*.coffee')
+    .pipe($.include())
+    .pipe($.coffee())
+    .pipe(gulp.dest('.tmp/scripts'));
+});
+
 gulp.task('fileinclude', function () {
   return gulp.src('app/*.html')
     .pipe($.fileInclude({
@@ -32,7 +45,7 @@ gulp.task('fileinclude', function () {
     .pipe(gulp.dest('.tmp'));
 });
 
-gulp.task('html', ['fileinclude', 'styles'], function () {
+gulp.task('html', ['fileinclude', 'styles', 'scripts', 'coffeescripts'], function () {
   var assets = $.useref.assets({searchPath: '{.tmp,app}'});
 
   return gulp.src('.tmp/*.html')
@@ -73,7 +86,7 @@ gulp.task('extras', function () {
 
 gulp.task('clean', require('del').bind(null, ['.tmp', 'dist']));
 
-gulp.task('connect', ['fileinclude', 'styles'], function () {
+gulp.task('connect', ['fileinclude', 'styles', 'scripts', 'coffeescripts'], function () {
   var serveStatic = require('serve-static');
   var serveIndex = require('serve-index');
   var app = require('connect')()
@@ -121,6 +134,7 @@ gulp.task('watch', ['connect'], function () {
   ]).on('change', $.livereload.changed);
 
   gulp.watch('app/styles/**/*.scss', ['styles']);
+  gulp.watch('app/scripts/**/*', ['scripts', 'coffeescripts']);
   gulp.watch('app/*.html', ['fileinclude']);
   gulp.watch('bower.json', ['wiredep']);
 });
