@@ -23,10 +23,19 @@ gulp.task('jshint', function () {
     .pipe($.jshint.reporter('fail'));
 });
 
-gulp.task('html', ['styles'], function () {
+gulp.task('fileinclude', function () {
+  return gulp.src('app/*.html')
+    .pipe($.fileInclude({
+      prefix: '@@'
+    }))
+    .pipe($.size())
+    .pipe(gulp.dest('.tmp'));
+});
+
+gulp.task('html', ['fileinclude', 'styles'], function () {
   var assets = $.useref.assets({searchPath: '{.tmp,app}'});
 
-  return gulp.src('app/*.html')
+  return gulp.src('.tmp/*.html')
     .pipe(assets)
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.csso()))
@@ -64,7 +73,7 @@ gulp.task('extras', function () {
 
 gulp.task('clean', require('del').bind(null, ['.tmp', 'dist']));
 
-gulp.task('connect', ['styles'], function () {
+gulp.task('connect', ['fileinclude', 'styles'], function () {
   var serveStatic = require('serve-static');
   var serveIndex = require('serve-index');
   var app = require('connect')()
@@ -112,6 +121,7 @@ gulp.task('watch', ['connect'], function () {
   ]).on('change', $.livereload.changed);
 
   gulp.watch('app/styles/**/*.scss', ['styles']);
+  gulp.watch('app/*.html', ['fileinclude']);
   gulp.watch('bower.json', ['wiredep']);
 });
 
