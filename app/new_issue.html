@@ -1,0 +1,35 @@
+@@include('./partials/head.html')
+<section class="main new_issue">
+  <fieldset>
+      <p></p>
+
+      <form>
+        <h1></h1>
+
+        <p></p>
+
+        <p><label for="text_field">議題主旨</label>
+          <input type="text" id="issue_name"></p>
+
+        <p><label for="text_area">議題內容</label>
+          <textarea id="text_area"></textarea></p>
+
+        <p><label for="select_element">分類</label>
+          <select name="select_element">
+            <optgroup label="校園">
+              <option value="1">環境</option>
+              <option value="2">餐廳</option>
+              <option value="3">機車</option>
+              <option value="4">宿舍</option>
+            </optgroup>
+            <optgroup label="教學">
+              <option value="1">學習資源</option>
+              <option value="2">教師資源</option>
+            </optgroup>
+        </select></p>
+
+        <p><input class="button" type="submit" value="Submit"></p>
+      </form>
+    </fieldset>
+</section>
+@@include('./partials/foot.html')

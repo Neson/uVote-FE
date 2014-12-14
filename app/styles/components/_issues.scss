@@ -9,9 +9,9 @@
     $issue-background: lighten($issue-border-color, 10);
     $issue-header-background: $issue-background;
     $issue-hover-background: lighten($issue-background, 5);
-    $issue-image-background: #DBD199;
+    $issue-image-background: #eee;
     $issue-image-hover-background: lighten($issue-image-background, 5);
-    $issue-stats-color: lighten($base-accent-color, 10);
+    $issue-stats-color: darken($main-color, 10);
 
     @include transition (all 0.2s ease-in-out);
     background-color: $issue-background;
@@ -19,7 +19,6 @@
     border: $issue-border;
     margin-bottom: $base-spacing;
     cursor: pointer;
-    box-shadow: 0 2px 4px darken($base-background-color, 10);
     position: relative;
 
     @include media($medium-screen) {

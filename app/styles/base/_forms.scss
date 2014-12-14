@@ -16,6 +16,7 @@ select {
 label {
   font-weight: bold;
   margin-bottom: $base-spacing / 4;
+  color: $main-color;
 
   &.required:after {
     content: "*";
@@ -33,7 +34,7 @@ select[multiple=multiple] {
   @include transition(border-color);
   background-color: white;
   border-radius: $form-border-radius;
-  border: 1px solid $form-border-color;
+  border: 3px solid $form-border-color;
   box-shadow: $form-box-shadow;
   font-family: $form-font-family;
   font-size: $form-font-size;
