@@ -1,0 +1,71 @@
+.search-tools {
+  $search-tools-border-color: $base-border-color;
+  $search-tools-background: lighten($search-tools-border-color, 10);
+  margin-bottom: 20px;
+
+  @include clearfix;
+
+  .filter, .search, .sort {
+    margin-bottom: 1em;
+
+    @include media($large-screen) {
+      @include span-columns(3.5);
+      margin-bottom: 0;
+    }
+
+    > div {
+      @extend input[type="text"];
+      position: relative;
+
+      label {
+        font-weight: 400;
+        cursor: pointer;
+        margin-bottom: 0;
+      }
+    }
+
+    ol label {
+      display: inline;
+    }
+
+    button {
+      @include button(simple, lighten($search-tools-background, 10));
+      @include position(absolute, 5px 5px auto auto);
+      font-size: .7em;
+    }
+
+    .hide-options {
+      margin-bottom: 0;
+
+      ol, button {
+        display: none;
+      }
+    }
+  }
+
+  .sort {
+
+    > div, > div:hover, > div:active {
+      border-color: transparent;
+    }
+  }
+
+  .trigger {
+    width: 100%;
+
+    @include media($large-screen) {
+      @include span-columns(1.5);
+    }
+
+    button {
+      width: 100%;
+      margin-top: 1em;
+      padding-top: .7em;
+      padding-bottom: .7em;
+
+      @include media($large-screen) {
+        margin-top: 1.95em;
+      }
+    }
+  }
+}

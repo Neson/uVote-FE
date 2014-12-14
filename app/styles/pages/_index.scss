@@ -8,6 +8,15 @@ body.index {
     .title img { display: none; }
   }
 
+  .issue_filters {
+    @include outer-container;
+    padding: 12px;
+  }
+
+  .issue_filters_wrapper {
+    background-color: #eee;
+  }
+
   .banner {
     height: 480px;
     position: relative;
